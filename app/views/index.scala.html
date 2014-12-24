@@ -1,0 +1,13 @@
+@(message: String)
+<html>
+  <head>
+		<title>@message</title>
+		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+	</head>
+	<body>
+		@tags.header()
+		<li>World Database</li>
+		<li><a href="/manual" target=_"blank">Documentation - Play</a></li>
+		<li><a href="http://www.scala-lang.org/documentation/" target="_blank">Documentation - Scala</a></li>
+	</body>
+</html>
