@@ -1,15 +1,11 @@
-body, li, h2, h3 {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-size: large;
-	font-weight: 300;
-	padding-left: 100px;
+body, h2, h3 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-size: large;
+  font-weight: 300;
+  padding-left: 100px;
+
 }
 
 h2 {
 	font-size: xx-large;
-}
-
-.play-logo {
-	padding-top: 2px;
-	vertical-align: middle;
 }
