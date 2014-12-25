@@ -1,14 +1,16 @@
 @(message: String)
 <html>
-  <head>
+    <head>
 		<title>@message</title>
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+		@tags.header()
 	</head>
 	<body>
-		@tags.header()
-		<li><a href="/menu" target=_"blank">World Database</a></li>
-		<li><a href="/manual" target=_"blank">Documentation - Play</a></li>
-		<li><a href="http://www.scala-lang.org/documentation/" target="_blank">Documentation - Scala</a></li>
-		<li><a href="https://typesafe.com/" target="_blank">Typesafe</a></li>
+		<div id="list">
+			<li><a href="/menu" target=_"blank">World Database</a></li>
+			<li><a href="/manual" target=_"blank">Documentation - Play</a></li>
+			<li><a href="http://www.scala-lang.org/documentation/" target="_blank">Documentation - Scala</a></li>
+			<li><a href="https://typesafe.com/" target="_blank">Typesafe</a></li>
+		</div>
 	</body>
 </html>
