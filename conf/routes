@@ -5,8 +5,8 @@
 # Home page
 GET   /               controllers.Application.index
 
-# Menu
-GET   /menu           controllers.Application.menu
+# World Menu
+GET   /world  		  controllers.Application.world
 
 # Manual
 GET   /manual		  controllers.Application.manual

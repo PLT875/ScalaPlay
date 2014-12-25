@@ -13,11 +13,11 @@ import play.api.test.Helpers._
  */
 class CityDaoTest extends FunSuite {
   
-  test("5 cities should be return for country code CHE"){
+  test("5 cities should be return for Switzerland"){
     running(FakeApplication()) {
       val cityDao = new CityDao
-      val result = cityDao.getCities("CHE")
-      assert(result.length == 4)
+      val result = cityDao.getCities("Switzerland")
+      assert(result.length == 5)
     }
   }
   
