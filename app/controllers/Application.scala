@@ -10,7 +10,7 @@ object Application extends Controller {
   }
   
   def menu = Action {
-    Ok(views.html.menu("Play & Scala Example"))
+    Ok(views.html.menu("World Database"))
   }
   
   def manual = Action {

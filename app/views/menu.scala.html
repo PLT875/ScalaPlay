@@ -1,10 +1,16 @@
 @(message: String)
+
+<!DOCTYPE html>
+
 <html>
 	<head>
 		<title>@message</title>
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+		@tags.header("World Database")
 	</head>
 	<body>
-		@tags.header()
+		<div id="list">
+			<li><a href="/" target=_"blank">List Cities by Country</a></li>
+		</div>
 	</body>
 </html>

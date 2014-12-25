@@ -1,11 +1,15 @@
 @(message: String)
+
+<!DOCTYPE html>
+
 <html>
     <head>
 		<title>@message</title>
 		<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-		@tags.header()
+		@tags.header("Play & Scala")
 	</head>
 	<body>
+		<p>Examples and documentation for Scala and Play:</p>
 		<div id="list">
 			<li><a href="/menu" target=_"blank">World Database</a></li>
 			<li><a href="/manual" target=_"blank">Documentation - Play</a></li>
