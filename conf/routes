@@ -8,6 +8,10 @@ GET   /               controllers.Application.index
 # World Menu
 GET   /world  		  controllers.Application.world
 
+# World Cities
+GET	  /world/cities   controllers.Application.cities
+POST  /world/cities   controllers.Application.citiesSubmit
+
 # Manual
 GET   /manual		  controllers.Application.manual
 

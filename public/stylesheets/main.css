@@ -1,4 +1,4 @@
-#list, p, h3, #button {
+#list, p, h3, #button, #form {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: large;
@@ -9,6 +9,14 @@
 
 #list, #button {
 	padding-left: 130px
+}
+
+label {
+	padding-right: 20px
+}
+
+#form {
+	padding-right: 100px
 }
 
 h2 {
