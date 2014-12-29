@@ -3,17 +3,17 @@
 # ~~~~
 
 # Home page
-GET   /               controllers.Application.index
+GET   /               			controllers.Application.index
 
 # World Menu
-GET   /world  		  controllers.Application.world
+GET   /world  		  			controllers.Application.world
 
 # World Cities
-GET	  /world/cities   controllers.Application.cities
-POST  /world/cities   controllers.Application.citiesSubmit
+GET	  /world/cities   			controllers.Application.cities
+GET   /world/cities/	        controllers.Application.citiesShow
 
 # Manual
-GET   /manual		  controllers.Application.manual
+GET   /manual		  			controllers.Application.manual
 
 # Map static resources from the /public folder to the /assets URL path
-GET   /assets/*file   controllers.Assets.at(path="/public", file)
+GET   /assets/*file   			controllers.Assets.at(path="/public", file)

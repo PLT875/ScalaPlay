@@ -5,7 +5,9 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
-
+import play.api.Logger._
+import world.dao._
+import world.model._
 
 object Application extends Controller {
 
@@ -26,9 +28,19 @@ object Application extends Controller {
   def cities = Action {
     Ok(views.html.helloworld.cities("List Cities by Country"))
   }
-
-  def citiesSubmit = Action { implicit request =>
-    val (country) = form.bindFromRequest.get
-    Ok("%s".format(country))
+  
+  /*
+    def citiesShow(country: String) = Action { implicit request =>
+      val cityDao = new CityDao
+      val cities = cityDao.getCities(country)
+      Ok(cities.toString)
+    }
+  **/
+  
+  def citiesShow = Action { implicit request =>
+    val country = form.bindFromRequest.get.toString
+    val cityDao = new CityDao
+    Ok(cityDao.getCities(country).toString)
   }
+  
 }
