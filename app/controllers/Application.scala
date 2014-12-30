@@ -18,7 +18,7 @@ object Application extends Controller {
   }
 
   def world = Action {
-    Ok(views.html.world("Hello World"))
+    Ok(views.html.world("Hello World!"))
   }
 
   def manual = Action {
@@ -28,19 +28,12 @@ object Application extends Controller {
   def cities = Action {
     Ok(views.html.helloworld.cities("List Cities by Country"))
   }
-  
-  /*
-    def citiesShow(country: String) = Action { implicit request =>
-      val cityDao = new CityDao
-      val cities = cityDao.getCities(country)
-      Ok(cities.toString)
-    }
-  **/
-  
+    
   def citiesShow = Action { implicit request =>
     val country = form.bindFromRequest.get.toString
     val cityDao = new CityDao
-    Ok(cityDao.getCities(country).toString)
+    val cityList = cityDao.getCities(country)
+    Ok(views.html.helloworld.citiesList("List Cities by Country", country, cityList))
   }
   
 }

@@ -6,14 +6,14 @@
   <head>
     <title>@message</title>
 	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-	@tags.header("Hello World")
+	@tags.header("Hello World!")
   </head>
   <body>
     <form id="form" action="@routes.Application.citiesShow" method="GET">
        <fieldset>
-         <legend>List Cities by Country</legend>
+         <legend><b>List Cities by Country</b></legend>
   	   	 <ol>
-             <label>Country</label><input type="text" name="country"/>
+  	   	 	<label>Country</label><input type="text" name="country"/>
          </ol>
          <ol>
          	<button id="form_sub" type="submit"><b>Submit</b></button>
@@ -21,9 +21,10 @@
          </ol>
        </fieldset>
     </form>
-    
+    <!--  
     <div id="button">
 		<button onclick="window.location.href='/world'"><b>Back</b></button>
 	</div>
+	-->
   </body>
 </html>
