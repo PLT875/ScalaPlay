@@ -1,32 +1,9 @@
-#list, p, h3, #button, #form, #results {
+body, legend, #subres {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: large;
 	font-weight: 300;
-	padding-left: 100px;
-	padding-top: 10px;
 }
-
-#list, #button {
-	padding-left: 130px
-}
-
-label {
-	padding-right: 20px
-}
-
-#form, #results {
-	padding-right: 100px
-}
-
-#tblresults {
-	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
-		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-	font-size: medium;
-	font-weight: 300;
-	table-layout:fixed;
-}
-
 
 h2 {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
@@ -34,4 +11,28 @@ h2 {
 	font-size: large;
 	font-weight: 300;
 	font-size: xx-large;
+}
+
+p, fieldset {
+	padding-left: 100px;
+}
+
+fieldset {
+	padding-right: 100px
+}
+
+#list, #button {
+	padding-left: 120px;
+}
+
+label {
+	padding-right: 20px;
+	padding-top: 10px;
+}
+
+#tblresults {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-size: medium;
+	font-weight: 300;
 }

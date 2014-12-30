@@ -5,26 +5,20 @@
 <html>
   <head>
     <title>@message</title>
-	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 	@tags.header("Hello World!")
   </head>
   <body>
     <form id="form" action="@routes.Application.citiesShow" method="GET">
        <fieldset>
-         <legend><b>List Cities by Country</b></legend>
+         <legend>List Cities by Country</legend>
   	   	 <ol>
-  	   	 	<label>Country</label><input type="text" name="country"/>
-         </ol>
-         <ol>
-         	<button id="form_sub" type="submit"><b>Submit</b></button>
-         	<button id="form_res" type="reset"><b>Reset</b></button>
+  	   	 	<div style="position:relative"><label>Country</label><input type="text" name="country"/></div>
+  	   	 	<div style="padding-top: 10px; position: absolute; left:225px">
+	         	<button class="btn btn-primary" type="submit">Submit</button>
+	            <button class="btn btn-primary" type="reset">Reset</button>
+	     	</div> 
          </ol>
        </fieldset>
     </form>
-    <!--  
-    <div id="button">
-		<button onclick="window.location.href='/world'"><b>Back</b></button>
-	</div>
-	-->
   </body>
 </html>

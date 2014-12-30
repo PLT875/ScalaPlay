@@ -4,20 +4,19 @@
 <html>
   <head>
     <title>@message</title>
-	<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 	@tags.header("Hello World!")
   </head>
   <body>
     <div id="results">
 	  	<fieldset>
-	   		<legend><b>Cities in @country</b></legend>
-	   		<table id="tblresults">
-		   		<tr>
-		   			<td width=200px><b>Name</b></td>
-		   			<td width=200px><b>District</b></td>
-		   			<td width=100px><b>Population</b></td>
-		   		</tr>  
+	   		<legend>Cities in @country</legend>
+	   		
+	   		<table class="table table-bordered table-hover" style="width:75%">
 		   		
+		   			<th width="col-md-5">Name</th>
+		   			<th width="col-md-5">District</th>
+		   			<th width="col-md-2">Population</th>
+		   		  
 		   	@cityList.map { city =>
 	  			<tr>
 	  				<td>@city.name</td>
@@ -25,7 +24,9 @@
 	  				<td>@city.population</td>
 	  			</tr>
 			} 
+			
 	   		</table>
+	   		
 	  	</fieldset>
   	</div>
   </body>
