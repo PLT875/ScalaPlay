@@ -26,7 +26,7 @@ object Application extends Controller {
   }
 
   def cities = Action {
-    Ok(views.html.helloworld.cities("List Cities By Country"))
+    Ok(views.html.helloworld.cities("List Cities by Country"))
   }
     
   def citiesShow = Action { implicit request =>

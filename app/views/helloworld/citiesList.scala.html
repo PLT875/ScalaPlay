@@ -10,13 +10,15 @@
     <div id="results">
 	  	<fieldset>
 	   		<legend>Cities in @country</legend>
-	   		<table class="table table-bordered table-hover" style="width:75%">
-	   			<th width="col-md-5">Name</th>
-	   			<th width="col-md-5">District</th>
-	   			<th width="col-md-2">Population</th>
+	   		<table class="table table-bordered table-hover" data-height="400" data-pagination="true" style="width:75%">
+	   			<th widht="col-md-1">#</th>
+	   			<th width="col-md-4">Name</th>
+	   			<th width="col-md-4">District</th>
+	   			<th width="col-md-3">Population</th>
 		   		  
-		   	@cityList.map { city =>
+		   	@cityList.zipWithIndex.map { case(city, index) =>
 	  			<tr>
+	  				<td>@(index + 1)</td>
 	  				<td>@city.name</td>
 	  				<td>@city.district</td>
 	  				<td>@city.population</td>
@@ -26,5 +28,6 @@
 	   		<button class="btn btn-primary" onclick="window.history.back()">Back</button>
 	  	</fieldset>
   	</div>
+  	<br></br>
   </body>
 </html>
