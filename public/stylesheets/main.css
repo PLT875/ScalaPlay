@@ -17,6 +17,10 @@ p, fieldset {
 	padding-left: 100px;
 }
 
+#form {
+	padding-left: 0px;
+}
+
 fieldset {
 	padding-right: 100px
 }
@@ -30,7 +34,7 @@ label {
 	padding-top: 10px;
 }
 
-#tblresults {
+#tblresults, label {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
 		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-size: medium;

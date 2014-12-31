@@ -8,12 +8,12 @@
 	@tags.header("Hello World!")
   </head>
   <body>
-    <form id="form" action="@routes.Application.citiesShow" method="GET">
+    <form action="@routes.Application.citiesShow" method="GET">
        <fieldset>
          <legend>List Cities by Country</legend>
-  	   	 <ol>
+  	   	 <ol id="form">
   	   	 	<div style="position:relative"><label>Country</label><input type="text" name="country"/></div>
-  	   	 	<div style="padding-top: 10px; position: absolute; left:225px">
+  	   	 	<div style="padding-top: 10px; position: absolute; left:188px">
 	         	<button class="btn btn-primary" type="submit">Submit</button>
 	            <button class="btn btn-primary" type="reset">Reset</button>
 	     	</div> 
