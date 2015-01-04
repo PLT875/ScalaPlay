@@ -1,0 +1,30 @@
+@(message: String)
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>@message</title>
+	@tags.header("Hello World!")
+  </head>
+  <body>
+    <fieldset>
+      <legend>List Densities by Region</legend>
+    </fieldset>
+    <form id="form" class="form-horizontal" style="width:50%"role="form" action="@routes.Application.populationsShow" method="GET"> 
+         <div class="form-group">
+         	<label style="text-align:right" class="col-md-2" for="region">Region</label>
+         	<div class="col-md-10">
+         		<input type="text" for="region" name="region"/>
+         	</div>
+         </div>
+	   	 <div class="form-group">
+	   	 	<div class="col-md-offset-2 col-md-10">
+        		<button class="btn btn-primary" type="submit">Submit</button>
+           		<button class="btn btn-primary" type="reset">Reset</button>
+           	</div>
+    	</div> 
+    </form>
+  </body>
+</html>
+

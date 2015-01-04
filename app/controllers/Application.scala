@@ -7,11 +7,13 @@ import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import play.api.Logger._
 import world.dao._
+import world.analytics._
 import world.model._
 
 object Application extends Controller {
 
-  val form = Form(single("country" -> text))
+  val citiesForm = Form(single("country" -> text))
+  val populationsForm = Form(single("region" -> text))
 
   def index = Action {
     Ok(views.html.index("Play & Scala Example"))
@@ -28,9 +30,21 @@ object Application extends Controller {
   def cities = Action {
     Ok(views.html.helloworld.cities("List Cities by Country"))
   }
+  
+  def populations = Action {
+    Ok(views.html.helloworld.populations("List Populations by Region"))
+  }
+  
+  def populationsShow = Action { implicit request =>
+    val region = populationsForm.bindFromRequest.get.toString
+    val countryDao = new CountryDao
+    val countryList = countryDao.getCountries(region)
+    val countryDensities = CountryAnalytics.populationDensity(countryList)
+    Ok(views.html.helloworld.populationsList("List Population Densities by Region", region, countryDensities))
+  }
     
   def citiesShow = Action { implicit request =>
-    val country = form.bindFromRequest.get.toString
+    val country = citiesForm.bindFromRequest.get.toString
     val cityDao = new CityDao
     val cityList = cityDao.getCities(country)
     Ok(views.html.helloworld.citiesList("List Cities by Country", country, cityList))

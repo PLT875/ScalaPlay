@@ -12,6 +12,9 @@ GET   /world  		  			controllers.Application.world
 GET	  /world/cities   			controllers.Application.cities
 GET   /world/cities/	        controllers.Application.citiesShow
 
+GET	  /world/populations		controllers.Application.populations
+GET	  /world/populations/		controllers.Application.populationsShow
+
 # Manual
 GET   /manual		  			controllers.Application.manual
 
