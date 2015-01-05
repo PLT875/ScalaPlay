@@ -13,7 +13,9 @@ class CityDao {
 
   def getCities(countryName: String): List[City] = {
     var conn = DB.getConnection("default")
-    val resultSet = conn.createStatement.executeQuery(s"SELECT * FROM CITY WHERE CountryCode = (SELECT CountryCode FROM COUNTRY WHERE Name = '$countryName')")
+    val query = "SELECT * FROM CITY WHERE CountryCode".concat(
+        s" = (SELECT CountryCode FROM COUNTRY WHERE Name = '$countryName')")
+    val resultSet = conn.createStatement.executeQuery(query)
     val cities = queryCityTable(resultSet, Nil)
     conn.close
     cities
