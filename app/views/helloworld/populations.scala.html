@@ -1,4 +1,4 @@
-@(message: String)
+@(message: String, regions: List[(String)])
 
 <!DOCTYPE html>
 
@@ -15,7 +15,11 @@
          <div class="form-group">
          	<label style="text-align:right" class="col-md-2" for="region">Region</label>
          	<div class="col-md-10">
-         		<input type="text" for="region" name="region"/>
+            <select type="text" class="form-control" style="width:50%" for="region" name="region"/>
+            @for(region <- regions){
+              <option value ="@region">@region</option>
+            }
+            </select>
          	</div>
          </div>
 	   	 <div class="form-group">

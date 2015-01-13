@@ -14,6 +14,7 @@ object Application extends Controller {
 
   val citiesForm = Form(single("country" -> text))
   val populationsForm = Form(single("region" -> text))
+  val languagesForm = Form(single("country" -> text))
 
   def index = Action {
     Ok(views.html.index("Play & Scala Example"))
@@ -32,7 +33,13 @@ object Application extends Controller {
   }
   
   def populations = Action {
-    Ok(views.html.helloworld.populations("List Populations by Region"))
+    val countryDao = new CountryDao
+    val regionsList = countryDao.getRegions
+    Ok(views.html.helloworld.populations("List Populations by Region", regionsList))
+  }
+
+  def languages = Action {
+    Ok(views.html.helloworld.languages("List Languages by Country"))
   }
   
   def populationsShow = Action { implicit request =>
@@ -48,6 +55,13 @@ object Application extends Controller {
     val cityDao = new CityDao
     val cityList = cityDao.getCities(country)
     Ok(views.html.helloworld.citiesList("List Cities by Country", country, cityList))
+  }
+
+  def languagesShow = Action { implicit request =>
+    val country = languagesForm.bindFromRequest.get.toString
+    val countryLanguageDao = new CountryLanguageDao
+    val languageList = countryLanguageDao.getLanguagePercentages(country)
+    Ok(views.html.helloworld.languagesList("List Languages by Country", country, languageList))
   }
   
 }

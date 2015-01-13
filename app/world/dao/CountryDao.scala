@@ -15,6 +15,20 @@ class CountryDao {
     conn.close
     countries
   }
+
+  def getRegions : List[String] = {
+    var conn = DB.getConnection("default")
+    val resultSet = conn.createStatement.executeQuery(s"SELECT DISTINCT(Region) FROM Country ORDER BY Region")
+    val regions = queryRegions(resultSet, Nil)
+    conn.close
+    regions
+  }
+
+  @tailrec
+  final def queryRegions(rs: ResultSet, acc: List[String]): List[String] = {
+    if (!rs.next) acc
+    else queryRegions(rs, acc :+ rs.getString("Region"))
+  }
   
   @tailrec
   final def queryCountryTable(rs: ResultSet, acc: List[Country]): List[Country] = {
