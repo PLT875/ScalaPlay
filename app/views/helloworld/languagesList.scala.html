@@ -6,52 +6,37 @@
     @tags.header("Hello World!")
     <script src="@routes.Assets.at("canvasjs-1.5.7/canvasjs.min.js")"></script>
     <script type="text/javascript">
-    function drawChart($title, $dataPoints) {     
-      var chart = new CanvasJS.Chart("chartContainer",
-      {
-        title: { text: $title },
-        data: [
-          {
-            type: "pie",
-            toolTipContent: "{y} (#percent %)",
-            dataPoints: $dataPoints
-          }
-        ]
-      });
-      chart.render();
-    }
-  </script>
+      function drawChart($dataPoints) {     
+        var chart = new CanvasJS.Chart("chartContainer",
+        {
+          data: [
+            {
+              type: "doughnut",
+              toolTipContent: "{y} (#percent %)",
+              dataPoints: $dataPoints,
+            }
+          ]
+        });
+        chart.render();
+      }
+    </script>
   </head>
   <body>
-  	<div id="chartContainer" style="height: 300px; width: 100%;">
-      
+  	<div id="results">
+      <fieldset>
+      <legend>Languages Spoken in @country</legend>
+        <div id="chartContainer" style="height: 350px; width: 100%;">
+          <script>
+            drawChart([
+              @for(language <- languagesList){
+                { y: @language._3, indexLabel: '@language._1' },
+              }
+            ]);
+          </script>
+        </div>
+        <button class="btn btn-primary" onclick="window.history.back()">Back</button>
+      </fieldset>
     </div>
-    <!--
-    <div id="results">
-	  	<fieldset>
-	   		<legend>Languages Spoken in @country</legend>
-	   		<table id="resultList" class="table table-bordered table-hover" data-height="400" data-pagination="true" style="width:75%">
-	   			<thead>
-		   			<th widht="col-md-1">#</th>
-		   			<th width="col-md-4">Language</th>
-		   			<th width="col-md-2">Percentage</th>
-		   			<th width="col-md-5">Population</th>
-		   		</thead>
-		   		<tbody> 
-			   	@languagesList.sortWith(_._2 > _._2).zipWithIndex.map { case(countryDen, index) =>
-		  			<tr>
-		  				<td>@(index + 1)</td>
-		  				<td>@(countryDen._1)</td>
-		  				<td>@(countryDen._2)</td>
-		  				<td>@(countryDen._3)</td>
-		  			</tr>
-				} 
-				</tbody>
-	   		</table>
-	   		<button class="btn btn-primary" onclick="window.history.back()">Back</button>
-	  	</fieldset>
-  	</div>
-  	-->
   	<br></br>
   </body>
 </html>

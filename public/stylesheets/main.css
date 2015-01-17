@@ -22,7 +22,7 @@ p, fieldset {
 }
 
 fieldset {
-	padding-right: 100px
+	padding-right: 100px;
 }
 
 #list, #button {
@@ -40,3 +40,4 @@ label {
 	font-size: medium;
 	font-weight: 300;
 }
+
