@@ -1,4 +1,4 @@
-@(message: String, country: String, languagesList: List[(String, String, Integer)])
+@(message: String, country: String, display: String, languagesList: List[(String, String, Integer)])
 
 <html>
   <head>
@@ -6,12 +6,12 @@
     @tags.header("Hello World!")
     <script src="@routes.Assets.at("canvasjs-1.5.7/canvasjs.min.js")"></script>
     <script type="text/javascript">
-      function drawChart($dataPoints) {     
+      function drawChart($display, $dataPoints) {     
         var chart = new CanvasJS.Chart("chartContainer",
         {
           data: [
             {
-              type: "doughnut",
+              type: $display,
               toolTipContent: "{y} (#percent %)",
               dataPoints: $dataPoints,
             }
@@ -27,7 +27,7 @@
       <legend>Languages Spoken in @country</legend>
         <div id="chartContainer" style="height: 350px; width: 100%;">
           <script>
-            drawChart([
+            drawChart('@display', [
               @for(language <- languagesList){
                 { y: @language._3, indexLabel: '@language._1' },
               }
