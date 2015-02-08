@@ -50,11 +50,15 @@ object Application extends Controller {
     Ok(views.html.helloworld.populationsList("List Population Densities by Region", region, countryDensities))
   }
     
-  def citiesShow = Action { implicit request =>
+  def citiesShow(page: Int) = Action { implicit request =>
     val country = citiesForm.bindFromRequest.get.toString
     val cityDao = new CityDao
     val cityList = cityDao.getCities(country)
-    Ok(views.html.helloworld.citiesList("List Cities by Country", country, cityList))
+    Ok(views.html.helloworld.citiesList("List Cities by Country", country, cityList, page))
+  }
+  
+  def citiesShowByPage(page: Int, country : String, cityList : List[City]) = Action {
+    Ok(views.html.helloworld.citiesList("List Cities by Country", country, cityList, page))
   }
 
   def languagesShow = Action { implicit request =>
@@ -62,6 +66,10 @@ object Application extends Controller {
     val countryLanguageDao = new CountryLanguageDao
     val languageList = countryLanguageDao.getLanguagePercentages(country)
     Ok(views.html.helloworld.languagesList("List Languages by Country", country, display.toString, languageList))
+  }
+  
+  def pagination(records : Int, currentPage: Int) = Action {
+    Ok(views.html.helloworld.pagination("Pagination Test", records, currentPage))
   }
   
 }

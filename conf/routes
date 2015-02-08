@@ -10,14 +10,15 @@ GET   /world  		  			controllers.Application.world
 
 # World Cities
 GET	  /world/cities   			controllers.Application.cities
-GET   /world/cities/	        controllers.Application.citiesShow
+GET   /world/cities/	        controllers.Application.citiesShow(page: Int ?= 1)
+
 
 # World Populations
 GET	  /world/populations		controllers.Application.populations
 GET	  /world/populations/		controllers.Application.populationsShow
 
 # World Languages
-GET		/world/languages      controllers.Application.languages
+GET	  /world/languages          controllers.Application.languages
 GET	  /world/languages/			controllers.Application.languagesShow
 
 # Manual
@@ -25,3 +26,5 @@ GET   /manual		  			controllers.Application.manual
 
 # Map static resources from the /public folder to the /assets URL path
 GET   /assets/*file   			controllers.Assets.at(path="/public", file)
+
+GET	  /pagination				controllers.Application.pagination(records: Int ?=0, currentPage: Int ?= 1)

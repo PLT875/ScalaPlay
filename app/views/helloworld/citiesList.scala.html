@@ -1,5 +1,5 @@
 @import _root_.world.model.City
-@(message: String, country: String, cityList: List[City])
+@(message: String, country: String, cityList: List[City], currentPage: Int)
 
 <html>
   <head>
@@ -9,7 +9,7 @@
   <body>
     <div id="results">
 	  	<fieldset>
-	   		<legend>Cities in @country</legend>
+	   		<legend>@country: @cityList.length cities</legend>
 	   		<table id="resultList" class="table table-bordered table-hover" data-height="400" data-pagination="true" style="width:75%">
 	   			<thead>
 		   			<th widht="col-md-1">#</th>
@@ -18,7 +18,7 @@
 		   			<th width="col-md-3">Population</th>
 		   		</thead>
 		   		<tbody> 
-			   	@cityList.zipWithIndex.map { case(city, index) =>
+			   	@cityList.zipWithIndex.filter(city => city._2 >= (currentPage - 1) * 10 && city._2 < currentPage * 10).map { case(city, index) =>
 		  			<tr>
 		  				<td>@(index + 1)</td>
 		  				<td>@city.name</td>
@@ -28,7 +28,19 @@
 				} 
 				</tbody>
 	   		</table>
-	   		<button class="btn btn-primary" onclick="window.history.back()">Back</button>
+	   		<ul class="pagination">
+	   		 	@if(cityList.length <= 10){
+	   		 		<li class="active"><a href="#">1</a></li>
+	   		 	} else {
+		   		 	@for(pageNo <- 1 to (cityList.length / 10) + (if(cityList.length % 10 > 0) 1 else 0)){
+					  	@if(pageNo == currentPage){
+					  		<li class="active"><a href="#">@pageNo</a></li>
+					  	} else {
+					  		<li><a href="/world/cities/?country=@country&&page=@pageNo">@pageNo</a></li>
+					  	}
+				  	}
+			  	}  	
+			</ul>
 	  	</fieldset>
   	</div>
   	<br></br>

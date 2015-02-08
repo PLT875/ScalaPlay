@@ -1,0 +1,24 @@
+@(message: String, records : Int, currentPage: Int)
+<html>
+<head>
+    <title>Pagination Test</title>
+	@tags.header("Hello World!")
+  </head>
+  <body> 
+  	<fieldset>
+   		 <ul class="pagination">
+   		 	@if(records <= 10){
+   		 		<li class="active"><a href="#">1</a></li>
+   		 	} else {
+	   		 	@for(pageNo <- 1 to (records / 10) + (records % 10)){
+				  	@if(pageNo == currentPage){
+				  		<li class="active"><a href="#">@pageNo</a></li>
+				  	} else {
+				  		<li><a href="@routes.Application.pagination(records, pageNo)">@pageNo</a></li>
+				  	}
+			  	}
+		  	}  	
+		 </ul>	 
+  	</fieldset>
+  </body> 
+</html>
