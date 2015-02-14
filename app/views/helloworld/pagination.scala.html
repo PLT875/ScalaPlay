@@ -1,4 +1,7 @@
+@import helpers.PageHelper
 @(message: String, records : Int, currentPage: Int)
+@pagesReq = @{ PageHelper.pagesRequired(records, 10) }
+@rangeReq = @{ PageHelper.rangeRequired(pagesReq, currentPage, 5) }
 <html>
 <head>
     <title>Pagination Test</title>
@@ -7,17 +10,19 @@
   <body> 
   	<fieldset>
    		 <ul class="pagination">
+   		 		<li><a href="@routes.Application.pagination(records, 1)">←</a></li>
    		 	@if(records <= 10){
    		 		<li class="active"><a href="#">1</a></li>
    		 	} else {
-	   		 	@for(pageNo <- 1 to (records / 10) + (records % 10)){
+	   		 	@for(pageNo <- rangeReq._1 to rangeReq._2){
 				  	@if(pageNo == currentPage){
 				  		<li class="active"><a href="#">@pageNo</a></li>
 				  	} else {
 				  		<li><a href="@routes.Application.pagination(records, pageNo)">@pageNo</a></li>
 				  	}
 			  	}
-		  	}  	
+		  	}
+		  	<li><a href="@routes.Application.pagination(records, PageHelper.pagesRequired(records, 10))">→</a></li>
 		 </ul>	 
   	</fieldset>
   </body> 

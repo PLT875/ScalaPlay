@@ -1,5 +1,9 @@
 @import _root_.world.model.City
+@import helpers.PageHelper
 @(message: String, country: String, cityList: List[City], currentPage: Int)
+@pagesReq = @{ PageHelper.pagesRequired(cityList.length, 10) }
+@rangeReq = @{ PageHelper.rangeRequired(pagesReq, currentPage, 10) }
+@citiesCounter = @{ PageHelper.citiesCounter(cityList.length, pagesReq, currentPage, 10) }
 
 <html>
   <head>
@@ -8,8 +12,9 @@
   </head>
   <body>
     <div id="results">
-	  	<fieldset>
-	   		<legend>@country: @cityList.length cities</legend>
+	  	<fieldset>	
+	   		<legend>Cities in @country</legend>
+	   		<ul class="pagination"><li><a><i>@citiesCounter</i></a></li></ul>
 	   		<table id="resultList" class="table table-bordered table-hover" data-height="400" data-pagination="true" style="width:75%">
 	   			<thead>
 		   			<th widht="col-md-1">#</th>
@@ -29,17 +34,19 @@
 				</tbody>
 	   		</table>
 	   		<ul class="pagination">
+	   				<li><a href="/world/cities/?country=@country&&page=1">←</a></li>
 	   		 	@if(cityList.length <= 10){
 	   		 		<li class="active"><a href="#">1</a></li>
 	   		 	} else {
-		   		 	@for(pageNo <- 1 to (cityList.length / 10) + (if(cityList.length % 10 > 0) 1 else 0)){
+		   		 	@for(pageNo <- rangeReq._1 to rangeReq._2){
 					  	@if(pageNo == currentPage){
 					  		<li class="active"><a href="#">@pageNo</a></li>
 					  	} else {
 					  		<li><a href="/world/cities/?country=@country&&page=@pageNo">@pageNo</a></li>
 					  	}
 				  	}
-			  	}  	
+			  	}
+			  		<li><a href="/world/cities/?country=@country&&page=@pagesReq">→</a></li>  	
 			</ul>
 	  	</fieldset>
   	</div>
