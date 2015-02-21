@@ -34,7 +34,7 @@
 				</tbody>
 	   		</table>
 	   		<ul class="pagination">
-	   				<li><a href="/world/cities/?country=@country&&page=1">←</a></li>
+	   				<li><a href="./?country=@country&&page=1">←</a></li>
 	   		 	@if(cityList.length <= 10){
 	   		 		<li class="active"><a href="#">1</a></li>
 	   		 	} else {
@@ -42,11 +42,11 @@
 					  	@if(pageNo == currentPage){
 					  		<li class="active"><a href="#">@pageNo</a></li>
 					  	} else {
-					  		<li><a href="/world/cities/?country=@country&&page=@pageNo">@pageNo</a></li>
+					  		<li><a href="./?country=@country&&page=@pageNo">@pageNo</a></li>
 					  	}
 				  	}
 			  	}
-			  		<li><a href="/world/cities/?country=@country&&page=@pagesReq">→</a></li>  	
+			  		<li><a href="./?country=@country&&page=@pagesReq">→</a></li>  	
 			</ul>
 	  	</fieldset>
   	</div>
